@@ -21,7 +21,6 @@ import {
     $readJSON,
     $toJSON,
 } from "./io.json"
-import { $readExcel, $toExcel } from "./io.excel"
 
 export {
     $readCSV as readCSVBrowser,
@@ -29,6 +28,4 @@ export {
     $toCSV as toCSVBrowser,
     $readJSON as readJSONBrowser,
     $toJSON as toJSONBrowser,
-    $readExcel as readExcelBrowser,
-    $toExcel as toExcelBrowser,
 }

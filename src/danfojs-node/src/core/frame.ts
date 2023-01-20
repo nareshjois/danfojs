@@ -13,19 +13,17 @@
 * ==========================================================================
 */
 import BaseDataFrame from "../../../danfojs-base/core/frame"
-import { toCSVNode, toExcelNode, toJSONNode } from "../../../danfojs-base/io/node";
+import { toCSVNode, toJSONNode } from "../../../danfojs-base/io/node";
 import {
     BaseDataOptionType,
     DataFrameInterface,
     CsvOutputOptionsNode,
     JsonOutputOptionsNode,
-    ExcelOutputOptionsNode,
 } from "../../../danfojs-base/shared/types";
 
 type ExtendedDataFrameInterface = DataFrameInterface & {
     toCSV(options?: CsvOutputOptionsNode): string | void
     toJSON(options?: JsonOutputOptionsNode): object | void
-    toExcel(options?: ExcelOutputOptionsNode): void
 }
 
 
@@ -154,34 +152,4 @@ export default class DataFrame extends BaseDataFrame implements ExtendedDataFram
         return toJSONNode(this, options as JsonOutputOptionsNode)
     }
 
-
-    /**
-     * Converts a DataFrame to Excel file format. 
-     * @param options Configuration object. Supported options:
-     * - `sheetName`: The sheet name to be written to. Defaults to `'Sheet1'`.
-     * - `filePath`: The filePath to be written to. Defaults to `'./output.xlsx'`. Option is only available in NodeJs
-     * - `fileName`: The fileName to be written to. Defaults to `'output.xlsx'`. Option is only available in Browser
-     * 
-     * @example
-     * ```
-     * const df = new DataFrame([[1, 2], [3, 4]], { columns: ['A', 'B']})
-     * df.toExcel({ filePath: './output.xlsx' }) // writes to local file system as output.xlsx in NodeJS
-     * ```
-     * 
-     * @example
-     * ```
-     * const df = new DataFrame([[1, 2], [3, 4]], { columns: ['A', 'B']})
-     * df.toExcel({ fileName: 'output.xlsx', download: true }) // downloads file browser
-     * ```
-     * 
-     * @example
-     * ```
-     * const df = new DataFrame([[1, 2], [3, 4]], { columns: ['A', 'B']})
-     * df.toExcel({ sheetName: 'Sheet2' }) // writes to Sheet2 in Excel
-     * ```
-     * 
-     */
-    toExcel(options?: ExcelOutputOptionsNode): void {
-        return toExcelNode(this, options as ExcelOutputOptionsNode)
-    }
 }

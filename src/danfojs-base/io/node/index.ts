@@ -24,7 +24,6 @@ import {
     $toJSON,
     $streamJSON
 } from "./io.json"
-import { $readExcel, $toExcel } from "./io.excel"
 
 export {
     $readCSV as readCSVNode,
@@ -34,7 +33,5 @@ export {
     $writeCsvOutputStream as writeCsvOutputStreamNode,
     $readJSON as readJSONNode,
     $toJSON as toJSONNode,
-    $streamJSON as streamJSONNode,
-    $readExcel as readExcelNode,
-    $toExcel as toExcelNode,
+    $streamJSON as streamJSONNode
 }

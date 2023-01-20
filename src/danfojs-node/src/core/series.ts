@@ -14,19 +14,17 @@
 */
 
 import BaseSeries from "../../../danfojs-base/core/series"
-import { toCSVNode, toExcelNode, toJSONNode } from "../../../danfojs-base/io/node";
+import { toCSVNode, toJSONNode } from "../../../danfojs-base/io/node";
 import {
     BaseDataOptionType,
     SeriesInterface,
     CsvOutputOptionsNode,
-    JsonOutputOptionsNode,
-    ExcelOutputOptionsNode
+    JsonOutputOptionsNode
 } from "../../../danfojs-base/shared/types";
 
 type ExtendedSeriesInterface = SeriesInterface & {
     toCSV(options?: CsvOutputOptionsNode): string | void
     toJSON(options?: JsonOutputOptionsNode): object | void
-    toExcel(options?: ExcelOutputOptionsNode): void
 }
 
 
@@ -122,28 +120,4 @@ export default class Series extends BaseSeries implements ExtendedSeriesInterfac
         return toJSONNode(this, options as JsonOutputOptionsNode)
     }
 
-
-    /**
-     * Converts a Series to Excel file format. 
-     * @param options Configuration object. Supported options:
-     * - `sheetName`: The sheet name to be written to. Defaults to `'Sheet1'`.
-     * - `filePath`: The filePath to be written to. Defaults to `'./output.xlsx'`. Option is only available in NodeJs
-     * - `fileName`: The fileName to be written to. Defaults to `'output.xlsx'`. Option is only available in Browser
-     * 
-     * @example
-     * ```
-     * const df = new Series([1, 2, 3, 4])
-     * df.toExcel({ filePath: './output.xlsx' }) // writes to local file system as output.xlsx in NodeJS
-     * ```
-     * 
-     * @example
-     * ```
-     * const df = new Series([1, 2, 3, 4])
-     * df.toExcel({ sheetName: 'Sheet2' }) // writes to Sheet2 in Excel
-     * ```
-     * 
-     */
-    toExcel(options?: ExcelOutputOptionsNode): void {
-        return toExcelNode(this, options as ExcelOutputOptionsNode)
-    }
 }

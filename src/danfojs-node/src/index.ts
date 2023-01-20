@@ -41,8 +41,6 @@ import {
     readJSONNode as readJSON,
     toJSONNode as toJSON,
     streamJSONNode as streamJSON,
-    readExcelNode as readExcel,
-    toExcelNode as toExcel
 } from "../../danfojs-base/io/node"
 
 import DataFrame from "./core/frame"
@@ -65,8 +63,6 @@ export {
     readJSON,
     toJSON,
     streamJSON,
-    readExcel,
-    toExcel,
     MinMaxScaler,
     StandardScaler,
     LabelEncoder,
